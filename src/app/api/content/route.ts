@@ -10,6 +10,9 @@ const DEFAULT_CONTENT = {
   instagramUrl: '#',
   tiktokUrl: '#',
   youtubeUrl: '#',
+  showInstagram: true,
+  showTiktok: true,
+  showYoutube: true,
   statuses: {
     foodProduction: 'In Development',
     communityVenue: 'In Development',
@@ -49,6 +52,9 @@ export async function POST(req: NextRequest) {
     instagramUrl: body.instagramUrl ?? current.instagramUrl,
     tiktokUrl: body.tiktokUrl ?? current.tiktokUrl,
     youtubeUrl: body.youtubeUrl ?? current.youtubeUrl,
+    showInstagram: body.showInstagram ?? current.showInstagram ?? true,
+    showTiktok: body.showTiktok ?? current.showTiktok ?? true,
+    showYoutube: body.showYoutube ?? current.showYoutube ?? true,
     statuses: {
       foodProduction: body.statuses?.foodProduction ?? current.statuses.foodProduction,
       communityVenue: body.statuses?.communityVenue ?? current.statuses.communityVenue,

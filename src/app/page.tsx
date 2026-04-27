@@ -8,6 +8,9 @@ interface SiteContent {
   instagramUrl: string;
   tiktokUrl: string;
   youtubeUrl: string;
+  showInstagram: boolean;
+  showTiktok: boolean;
+  showYoutube: boolean;
   statuses: {
     foodProduction: string;
     communityVenue: string;
@@ -24,6 +27,9 @@ const DEFAULT: SiteContent = {
   instagramUrl: '#',
   tiktokUrl: '#',
   youtubeUrl: '#',
+  showInstagram: true,
+  showTiktok: true,
+  showYoutube: true,
   statuses: {
     foodProduction: 'In Development',
     communityVenue: 'In Development',
@@ -314,6 +320,15 @@ export default function Home() {
         .save-msg { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 500; }
         .save-msg.success { background: rgba(79,94,69,0.15); color: var(--forest); border-left: 3px solid var(--moss); }
         .save-msg.error { background: rgba(197,104,60,0.1); color: var(--clay-deep); border-left: 3px solid var(--clay); }
+        .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid rgba(31,48,37,0.07); }
+        .toggle-row:last-child { border-bottom: none; }
+        .toggle-label { font-size: 0.94rem; color: var(--ink); font-weight: 500; }
+        .toggle-switch { position: relative; width: 44px; height: 24px; flex-shrink: 0; }
+        .toggle-switch input { opacity: 0; width: 0; height: 0; }
+        .toggle-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #ccc; border-radius: 24px; transition: 0.3s; }
+        .toggle-slider:before { position: absolute; content: ''; height: 18px; width: 18px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+        input:checked + .toggle-slider { background: var(--forest); }
+        input:checked + .toggle-slider:before { transform: translateX(20px); }
       `}</style>
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -361,7 +376,31 @@ export default function Home() {
                 </div>
               </div>
               <div className="admin-section">
-                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '1.15rem', color: 'var(--forest)', marginBottom: '1rem', fontWeight: 500 }}>Social Links</h3>
+                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '1.15rem', color: 'var(--forest)', marginBottom: '0.5rem', fontWeight: 500 }}>Social Links</h3>
+                <p style={{ fontSize: '0.84rem', color: 'var(--ink-soft)', marginBottom: '1rem' }}>Toggle to show or hide each platform in the footer.</p>
+                <div style={{ background: 'var(--cream-deep)', borderRadius: 8, padding: '0.5rem 1rem', marginBottom: '1rem' }}>
+                  <div className="toggle-row">
+                    <span className="toggle-label">📸 Instagram</span>
+                    <label className="toggle-switch">
+                      <input type="checkbox" checked={form.showInstagram} onChange={e => setForm(f => ({ ...f, showInstagram: e.target.checked }))} />
+                      <span className="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div className="toggle-row">
+                    <span className="toggle-label">🎵 TikTok</span>
+                    <label className="toggle-switch">
+                      <input type="checkbox" checked={form.showTiktok} onChange={e => setForm(f => ({ ...f, showTiktok: e.target.checked }))} />
+                      <span className="toggle-slider"></span>
+                    </label>
+                  </div>
+                  <div className="toggle-row">
+                    <span className="toggle-label">▶️ YouTube</span>
+                    <label className="toggle-switch">
+                      <input type="checkbox" checked={form.showYoutube} onChange={e => setForm(f => ({ ...f, showYoutube: e.target.checked }))} />
+                      <span className="toggle-slider"></span>
+                    </label>
+                  </div>
+                </div>
                 <div className="admin-field">
                   <label>Instagram URL</label>
                   <input type="url" value={form.instagramUrl} onChange={e => setForm(f => ({ ...f, instagramUrl: e.target.value }))} placeholder="https://instagram.com/..." />
@@ -617,9 +656,9 @@ export default function Home() {
           <div className="footer-col">
             <h4>Connect</h4>
             <ul>
-              <li><a href={content.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a></li>
-              <li><a href={content.tiktokUrl} target="_blank" rel="noopener noreferrer">TikTok</a></li>
-              <li><a href={content.youtubeUrl} target="_blank" rel="noopener noreferrer">YouTube</a></li>
+              {content.showInstagram && <li><a href={content.instagramUrl} target="_blank" rel="noopener noreferrer">Instagram</a></li>}
+              {content.showTiktok && <li><a href={content.tiktokUrl} target="_blank" rel="noopener noreferrer">TikTok</a></li>}
+              {content.showYoutube && <li><a href={content.youtubeUrl} target="_blank" rel="noopener noreferrer">YouTube</a></li>}
               <li><span className="coming-soon">Flagship: Coming Soon</span></li>
             </ul>
           </div>
