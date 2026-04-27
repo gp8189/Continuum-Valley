@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuum Valley — Complete Brand Bible</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sage: #7A8C6E;
+  --sage-light: #A8B99A;
+  --sage-dark: #4F5E45;
+  --terracotta: #C4714A;
+  --terracotta-light: #D9956F;
+  --cream: #F5EFE0;
+  --cream-dark: #E8DFC8;
+  --soil: #3D2B1F;
+  --soil-light: #5C4033;
+  --wheat: #D4B483;
+  --white: #FDFAF5;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--soil);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── NAV ── */
+.toc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--soil);
+  padding: 0 32px;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.toc-nav::-webkit-scrollbar { display: none; }
+.toc-link {
+  color: var(--wheat);
+  text-decoration: none;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 0.2s, color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.toc-link:hover { opacity: 1; color: var(--terracotta-light); border-bottom-color: var(--terracotta); }
+
+/* ── HERO ── */
+.hero {
+  background: var(--soil);
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 64px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(196,113,74,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 50%, rgba(122,140,110,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 10%, rgba(212,180,131,0.1) 0%, transparent 50%);
+}
+.hero-eyebrow {
+  font-size: 9px; font-weight: 500; letter-spacing: 0.45em;
+  text-transform: uppercase; color: var(--terracotta-light);
+  margin-bottom: 16px; position: relative;
+}
+.hero-logo {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  position: relative; margin-bottom: 20px;
+}
+.hero-icon { width: 56px; height: 56px; margin-bottom: 4px; }
+.hero-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700; color: var(--cream);
+  letter-spacing: 0.06em; text-transform: uppercase; line-height: 1;
+}
+.hero-divider { width: 48px; height: 1px; background: var(--terracotta); margin: 6px auto; }
+.hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px; font-weight: 300; letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--wheat);
+}
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-style: italic; color: var(--wheat);
+  opacity: 0.8; position: relative; margin-top: 8px;
+}
+
+/* ── SECTION WRAPPER ── */
+.section {
+  max-width: 1000px; margin: 0 auto;
+  padding: 64px 40px;
+}
+.section + .section { padding-top: 0; }
+
+.sec-header {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 36px;
+}
+.sec-num {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  color: var(--terracotta); font-family: monospace;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px; font-weight: 400; color: var(--soil);
+}
+.sec-line { flex: 1; height: 1px; background: var(--cream-dark); }
+
+/* ── FULL-WIDTH DIVIDER ── */
+.divider { height: 1px; background: linear-gradient(to right, transparent, var(--cream-dark), transparent); margin: 0 40px; }
+
+/* ── CARDS ── */
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 28px 32px;
+  border: 1px solid var(--cream-dark);
+}
+.card-dark {
+  background: var(--soil);
+  border-radius: 16px;
+  padding: 28px 32px;
+  position: relative; overflow: hidden;
+}
+.card-dark::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(196,113,74,0.12) 0%, transparent 55%);
+}
+.card-sage {
+  background: var(--sage-dark);
+  border-radius: 16px;
+  padding: 28px 32px;
+}
+.card-terra {
+  background: var(--terracotta);
+  border-radius: 16px;
+  padding: 28px 32px;
+}
+
+/* ── IDENTITY GRID ── */
+.identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media(max-width:640px){ .identity-grid { grid-template-columns: 1fr; } }
+
+.id-item {}
+.id-label {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--terracotta);
+  margin-bottom: 6px;
+}
+.id-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; color: var(--soil); line-height: 1.3;
+}
+.id-value.mono {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px; font-weight: 500; color: var(--sage-dark);
+}
+.id-value.big {
+  font-size: 26px;
+}
+
+/* ── COPY BOX ── */
+.copy-box {
+  background: var(--cream-dark);
+  border-radius: 12px;
+  padding: 18px 22px;
+  border-left: 4px solid var(--sage);
+  position: relative;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+.copy-box:hover { border-color: var(--terracotta); }
+.copy-box .copy-hint {
+  position: absolute; top: 10px; right: 14px;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--sage); opacity: 0.6;
+}
+.copy-box p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px; font-style: italic;
+  color: var(--soil-light); line-height: 1.5;
+  padding-right: 60px;
+}
+.copy-box.plain p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px; font-style: normal;
+  color: var(--soil);
+}
+.copied-msg {
+  display: none;
+  position: absolute; top: 10px; right: 14px;
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--terracotta); font-weight: 600;
+}
+
+/* ── COLOR PALETTE ── */
+.palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 14px; }
+.swatch { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(61,43,31,0.08); }
+.swatch-top { height: 80px; }
+.swatch-info { padding: 10px 12px; background: var(--white); }
+.swatch-name { font-size: 11px; font-weight: 600; color: var(--soil); }
+.swatch-hex { font-size: 10px; color: var(--sage); font-family: monospace; margin-top: 1px; }
+.swatch-use { font-size: 9px; color: var(--soil-light); opacity: 0.6; margin-top: 2px; letter-spacing: 0.05em; }
+
+/* ── TYPOGRAPHY ── */
+.type-row { display: flex; flex-direction: column; gap: 24px; }
+.type-block { border-left: 3px solid var(--cream-dark); padding-left: 20px; }
+.type-block.t1 { border-color: var(--terracotta); }
+.type-block.t2 { border-color: var(--sage); }
+.type-block.t3 { border-color: var(--wheat); }
+.type-sample { margin-bottom: 4px; }
+.type-meta { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sage); font-weight: 500; }
+
+/* ── VOICE TABLE ── */
+.voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:600px){ .voice-grid { grid-template-columns: 1fr; } }
+.voice-item { background: var(--white); border-radius: 12px; padding: 18px 20px; border-top: 3px solid var(--cream-dark); }
+.voice-item.yes { border-color: var(--sage); }
+.voice-item.no  { border-color: var(--terracotta); opacity: 0.7; }
+.voice-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 8px; }
+.voice-item.yes .voice-tag { color: var(--sage-dark); }
+.voice-item.no  .voice-tag { color: var(--terracotta); }
+.voice-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.voice-list li { font-size: 13px; color: var(--soil-light); }
+.voice-list li::before { content: '→ '; color: var(--sage); font-weight: 600; }
+.voice-item.no .voice-list li::before { content: '✕ '; color: var(--terracotta); }
+
+/* ── PLATFORM BIOS ── */
+.bio-stack { display: flex; flex-direction: column; gap: 20px; }
+.bio-card { background: var(--white); border-radius: 16px; overflow: hidden; }
+.bio-top { padding: 14px 20px; display: flex; align-items: center; gap: 12px; }
+.bio-platform-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: white; flex-shrink: 0; }
+.bio-platform-icon.tiktok { background: #010101; }
+.bio-platform-icon.instagram { background: linear-gradient(135deg, #F58529, #DD2A7B, #8134AF); }
+.bio-platform-name { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage-dark); }
+.bio-handle { font-size: 12px; color: var(--terracotta); font-weight: 500; }
+.bio-body { padding: 0 20px 20px; }
+.bio-display { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); margin-bottom: 6px; }
+
+/* ── POSTING SCHEDULE ── */
+.schedule-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 8px; }
+@media(max-width:600px){ .schedule-grid { grid-template-columns: repeat(4,1fr); } }
+.day-cell { border-radius: 10px; padding: 12px 8px; text-align: center; background: var(--white); border: 1px solid var(--cream-dark); }
+.day-cell.active { background: var(--sage-dark); border-color: var(--sage-dark); }
+.day-cell.accent { background: var(--terracotta); border-color: var(--terracotta); }
+.day-name { font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+.day-cell.active .day-name,
+.day-cell.accent .day-name { color: var(--cream); }
+.day-cell:not(.active):not(.accent) .day-name { color: var(--sage); }
+.day-content { font-size: 10px; margin-top: 6px; line-height: 1.4; }
+.day-cell.active .day-content { color: var(--sage-light); }
+.day-cell.accent .day-content { color: var(--cream-dark); }
+.day-cell:not(.active):not(.accent) .day-content { color: var(--soil-light); opacity: 0.5; font-style: italic; }
+
+/* ── LAUNCH CALENDAR ── */
+.cal-grid { display: flex; flex-direction: column; gap: 12px; }
+.cal-day { display: grid; grid-template-columns: 100px 1fr; gap: 16px; align-items: start; }
+@media(max-width:540px){ .cal-day { grid-template-columns: 1fr; } }
+.cal-date { 
+  background: var(--soil); border-radius: 12px;
+  padding: 12px 14px; text-align: center;
+}
+.cal-day-name { font-size: 9px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--wheat); opacity: 0.6; }
+.cal-day-num { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--cream); line-height: 1; }
+.cal-items { display: flex; flex-direction: column; gap: 8px; padding-top: 2px; }
+.cal-post { background: var(--white); border-radius: 10px; padding: 12px 16px; border-left: 3px solid var(--cream-dark); }
+.cal-post.post-tiktok  { border-color: #69C9D0; }
+.cal-post.post-ig      { border-color: #DD2A7B; }
+.cal-post.post-both    { border-color: var(--terracotta); }
+.cal-post-plat { font-size: 8px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 3px; }
+.post-tiktok  .cal-post-plat { color: #3badb5; }
+.post-ig      .cal-post-plat { color: #DD2A7B; }
+.post-both    .cal-post-plat { color: var(--terracotta); }
+.cal-post-title { font-size: 13px; font-weight: 600; color: var(--soil); }
+.cal-post-desc  { font-size: 12px; color: var(--soil-light); opacity: 0.7; margin-top: 2px; }
+.cal-post-hook  { font-size: 11px; font-style: italic; color: var(--sage-dark); margin-top: 4px; background: var(--cream); padding: 5px 10px; border-radius: 6px; }
+
+/* ── MONETIZATION ── */
+.mono-phases { display: flex; flex-direction: column; gap: 20px; }
+.mono-phase {
+  background: var(--white); border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--cream-dark);
+}
+.mono-phase-header {
+  padding: 16px 24px;
+  display: flex; align-items: center; gap: 14px;
+}
+.mono-phase-header.ph1 { background: var(--sage-dark); }
+.mono-phase-header.ph2 { background: var(--terracotta); }
+.mono-phase-header.ph3 { background: var(--soil); }
+.mono-phase-num { font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+.mono-phase-title { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--cream); font-weight: 400; }
+.mono-phase-follow { font-size: 11px; color: rgba(255,255,255,0.6); margin-left: auto; white-space: nowrap; }
+.mono-phase-body { padding: 20px 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media(max-width:540px){ .mono-phase-body { grid-template-columns: 1fr; } }
+.mono-stream { }
+.mono-stream-name { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 4px; }
+.mono-stream-desc { font-size: 13px; color: var(--soil-light); line-height: 1.5; }
+
+/* ── REVENUE TABLE ── */
+.rev-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; }
+.rev-table th {
+  background: var(--soil); color: var(--wheat);
+  font-size: 9px; font-weight: 600; letter-spacing: 0.25em;
+  text-transform: uppercase; padding: 14px 16px; text-align: left;
+}
+.rev-table td { padding: 13px 16px; font-size: 13px; border-bottom: 1px solid var(--cream-dark); background: var(--white); }
+.rev-table tr:last-child td { border-bottom: none; }
+.rev-table .milestone { font-weight: 600; color: var(--soil); }
+.rev-table .range { color: var(--sage-dark); font-weight: 600; }
+.rev-table .note { color: var(--soil-light); font-size: 12px; opacity: 0.7; }
+.rev-table tr.highlight td { background: var(--cream); }
+.rev-disclaimer { font-size: 11px; color: var(--sage); font-style: italic; margin-top: 10px; opacity: 0.8; }
+
+/* ── LOGO MINI ── */
+.logo-mini-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; }
+.logo-mini-card { border-radius: 14px; padding: 36px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 160px; }
+.lm-dark  { background: var(--soil); }
+.lm-sage  { background: var(--sage-dark); }
+.lm-terra { background: var(--terracotta); }
+.lm-cream { background: var(--cream-dark); border: 1px solid var(--cream-dark); }
+.lm-word { font-family:'Playfair Display',serif; font-size:18px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; line-height:1; }
+.lm-div  { width:24px; height:1px; margin:3px 0; }
+.lm-sub  { font-family:'Cormorant Garamond',serif; font-size:9px; font-weight:300; letter-spacing:0.45em; text-transform:uppercase; }
+.lm-dark  .lm-word { color:var(--cream); }  .lm-dark  .lm-sub { color:var(--wheat); } .lm-dark  .lm-div { background:var(--terracotta); }
+.lm-sage  .lm-word { color:var(--cream); }  .lm-sage  .lm-sub { color:var(--sage-light); } .lm-sage  .lm-div { background:var(--wheat); }
+.lm-terra .lm-word { color:var(--white); }  .lm-terra .lm-sub { color:var(--cream-dark); } .lm-terra .lm-div { background:rgba(255,255,255,0.4); }
+.lm-cream .lm-word { color:var(--soil); }   .lm-cream .lm-sub { color:var(--sage); } .lm-cream .lm-div { background:var(--terracotta); }
+
+/* ── CONTENT PILLARS ── */
+.pillars-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap: 14px; }
+.pillar { border-radius: 14px; padding: 22px 20px; }
+.pillar-num { font-size: 28px; font-family:'Playfair Display',serif; font-weight:700; line-height:1; margin-bottom:8px; }
+.pillar-name { font-size:13px; font-weight:600; letter-spacing:0.05em; margin-bottom:6px; }
+.pillar-desc { font-size:12px; opacity:0.75; line-height:1.5; }
+.p1 { background:var(--soil); color:var(--cream); }  .p1 .pillar-num { color:var(--terracotta); }
+.p2 { background:var(--sage-dark); color:var(--cream); } .p2 .pillar-num { color:var(--wheat); }
+.p3 { background:var(--terracotta); color:var(--white); } .p3 .pillar-num { color:var(--cream-dark); }
+.p4 { background:var(--cream-dark); color:var(--soil); } .p4 .pillar-num { color:var(--sage-dark); }
+.p5 { background:var(--wheat); color:var(--soil); } .p5 .pillar-num { color:var(--soil-light); }
+
+/* ── FOOTER ── */
+.page-footer { background:var(--soil); padding:36px 48px; text-align:center; margin-top:64px; }
+.page-footer p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--wheat); opacity:0.5; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
+.section { animation: fadeUp 0.5s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="toc-nav">
+  <a href="#identity"    class="toc-link">Identity</a>
+  <a href="#colors"      class="toc-link">Colors</a>
+  <a href="#typography"  class="toc-link">Fonts</a>
+  <a href="#logos"       class="toc-link">Logos</a>
+  <a href="#voice"       class="toc-link">Voice</a>
+  <a href="#pillars"     class="toc-link">Content</a>
+  <a href="#bios"        class="toc-link">Bios</a>
+  <a href="#schedule"    class="toc-link">Schedule</a>
+  <a href="#calendar"    class="toc-link">Week 1</a>
+  <a href="#monetize"    class="toc-link">Monetize</a>
+  <a href="#revenue"     class="toc-link">Revenue</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Complete Brand Identity System</div>
+  <div class="hero-logo">
+    <svg class="hero-icon" viewBox="0 0 52 52" fill="none">
+      <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#7A8C6E" opacity="0.2"/>
+      <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#A8B99A" stroke-width="1.5" fill="none"/>
+      <circle cx="26" cy="15" r="5" fill="#C4714A" opacity="0.9"/>
+      <line x1="4" y1="40" x2="48" y2="40" stroke="#F5EFE0" stroke-width="1.2" opacity="0.2"/>
+      <path d="M16 38 Q16 34 20 32" stroke="#A8B99A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M36 38 Q36 34 32 32" stroke="#A8B99A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="hero-wordmark">Continuum Valley</div>
+    <div class="hero-divider"></div>
+    <div class="hero-sub">Community Farm Market</div>
+  </div>
+  <div class="hero-tagline">Where the valley feeds the village.</div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 01 BRAND IDENTITY -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="identity">
+  <div class="sec-header">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">Brand Identity</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div class="identity-grid">
+    <div class="id-item">
+      <div class="id-label">Brand Name</div>
+      <div class="id-value big">Continuum Valley</div>
+    </div>
+    <div class="id-item">
+      <div class="id-label">TikTok Handle</div>
+      <div class="id-value mono">@continuumvalley</div>
+    </div>
+    <div class="id-item">
+      <div class="id-label">Instagram Handle</div>
+      <div class="id-value mono">@continuumvalley</div>
+    </div>
+    <div class="id-item">
+      <div class="id-label">Display Name</div>
+      <div class="id-value mono">Continuum Valley 🌿</div>
+    </div>
+    <div class="id-item">
+      <div class="id-label">Primary Tagline</div>
+      <div class="id-value" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;">Where the valley feeds the village.</div>
+    </div>
+    <div class="id-item">
+      <div class="id-label">Mission Statement</div>
+      <div class="id-value" style="font-size:15px;font-weight:400;line-height:1.5;">Affordable fresh produce for every family — a community farm market built to nourish, unite, and grow.</div>
+    </div>
+    <div class="id-item">
+      <div class="id-label">Brand Category</div>
+      <div class="id-value mono">Community · Food Access · Social Impact</div>
+    </div>
+    <div class="id-item">
+      <div class="id-label">Franchise Vision</div>
+      <div class="id-value mono">Scalable produce market model · Local franchise territories</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 02 COLOR PALETTE -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="colors">
+  <div class="sec-header">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">Color Palette</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="palette-grid">
+    <div class="swatch">
+      <div class="swatch-top" style="background:#3D2B1F;"></div>
+      <div class="swatch-info"><div class="swatch-name">Deep Soil</div><div class="swatch-hex">#3D2B1F</div><div class="swatch-use">Primary bg · Logo</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#5C4033;"></div>
+      <div class="swatch-info"><div class="swatch-name">Soil Light</div><div class="swatch-hex">#5C4033</div><div class="swatch-use">Secondary bg</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#4F5E45;"></div>
+      <div class="swatch-info"><div class="swatch-name">Sage Dark</div><div class="swatch-hex">#4F5E45</div><div class="swatch-use">Profile pic · Headers</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#7A8C6E;"></div>
+      <div class="swatch-info"><div class="swatch-name">Sage</div><div class="swatch-hex">#7A8C6E</div><div class="swatch-use">Brand color · Accents</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#A8B99A;"></div>
+      <div class="swatch-info"><div class="swatch-name">Sage Light</div><div class="swatch-hex">#A8B99A</div><div class="swatch-use">Sub-text · Icons</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#C4714A;"></div>
+      <div class="swatch-info"><div class="swatch-name">Terracotta</div><div class="swatch-hex">#C4714A</div><div class="swatch-use">CTA · Highlights</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#D4B483;"></div>
+      <div class="swatch-info"><div class="swatch-name">Wheat</div><div class="swatch-hex">#D4B483</div><div class="swatch-use">Warm accent</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#E8DFC8; border:1px solid #ddd;"></div>
+      <div class="swatch-info"><div class="swatch-name">Cream Dark</div><div class="swatch-hex">#E8DFC8</div><div class="swatch-use">Card backgrounds</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#F5EFE0; border:1px solid #ddd;"></div>
+      <div class="swatch-info"><div class="swatch-name">Cream</div><div class="swatch-hex">#F5EFE0</div><div class="swatch-use">Page bg · Breathing room</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-top" style="background:#FDFAF5; border:1px solid #ddd;"></div>
+      <div class="swatch-info"><div class="swatch-name">White Cream</div><div class="swatch-hex">#FDFAF5</div><div class="swatch-use">Content bg · Text on dark</div></div>
+    </div>
+  </div>
+
+  <div style="margin-top:24px;" class="card">
+    <div class="id-label" style="margin-bottom:12px;">Color Hierarchy Rule</div>
+    <p style="font-size:13px;color:var(--soil-light);line-height:1.7;">
+      <strong style="color:var(--soil);">Profile & Logo:</strong> Deep Soil (#3D2B1F) background always.<br>
+      <strong style="color:var(--soil);">Feed/Post Backgrounds:</strong> Cream (#F5EFE0) for breathing room and scroll-stopping softness.<br>
+      <strong style="color:var(--soil);">CTAs & Emphasis:</strong> Terracotta (#C4714A) only — never overuse it.<br>
+      <strong style="color:var(--soil);">Brand Identity Color:</strong> Sage (#7A8C6E) — this is your signature.
+    </p>
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 03 TYPOGRAPHY -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="typography">
+  <div class="sec-header">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Font Style & Typography</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="type-row">
+    <div class="type-block t1">
+      <div class="type-sample" style="font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--soil);letter-spacing:0.04em;line-height:1.1;">Continuum Valley</div>
+      <div class="type-meta">Playfair Display Bold — Logo, Headlines, Title Cards · Google Fonts (free)</div>
+    </div>
+    <div class="type-block t2">
+      <div class="type-sample" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-style:italic;color:var(--soil-light);font-weight:300;">Fresh is not a privilege. It's a right.</div>
+      <div class="type-meta">Cormorant Garamond Light Italic — Taglines, Quotes, Pull Quotes · Google Fonts (free)</div>
+    </div>
+    <div class="type-block t3">
+      <div class="type-sample" style="font-family:'DM Sans',sans-serif;font-size:15px;color:var(--sage-dark);font-weight:400;line-height:1.7;">Community farm market. Affordable fresh produce for every family. Building roots. Feeding families. Growing together every single season.</div>
+      <div class="type-meta">DM Sans Regular — Body copy, captions, bios, descriptions · Google Fonts (free)</div>
+    </div>
+    <div class="type-block">
+      <div class="type-sample" style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.4em;text-transform:uppercase;color:var(--terracotta);">Community · Nourishment · Growth · Access</div>
+      <div class="type-meta">DM Sans Semibold All-Caps — Labels, Eyebrows, Section Tags, Hashtag styling</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:24px;">
+    <div class="id-label" style="margin-bottom:8px;">Where to get these fonts FREE</div>
+    <p style="font-size:13px;color:var(--soil-light);">All fonts are on <strong style="color:var(--sage-dark);">Google Fonts (fonts.google.com)</strong> — free to download. In Canva, just search the font name directly in the font picker. They are pre-loaded in Canva Pro and available in Canva Free.</p>
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 04 LOGOS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="logos">
+  <div class="sec-header">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">Logo Variations</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="logo-mini-grid">
+    <div class="logo-mini-card lm-dark">
+      <svg width="36" height="36" viewBox="0 0 52 52" fill="none">
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#7A8C6E" opacity="0.2"/>
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#A8B99A" stroke-width="1.5" fill="none"/>
+        <circle cx="26" cy="15" r="5" fill="#C4714A" opacity="0.9"/>
+        <path d="M16 38 Q16 34 20 32" stroke="#A8B99A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 38 Q36 34 32 32" stroke="#A8B99A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="lm-word">Continuum</div><div class="lm-div"></div><div class="lm-sub">Valley</div>
+      <div style="font-size:9px;color:var(--wheat);opacity:0.5;margin-top:10px;letter-spacing:0.2em;text-transform:uppercase;">Primary · Dark</div>
+    </div>
+    <div class="logo-mini-card lm-sage">
+      <svg width="36" height="36" viewBox="0 0 52 52" fill="none">
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#A8B99A" opacity="0.2"/>
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#F5EFE0" stroke-width="1.5" fill="none"/>
+        <circle cx="26" cy="15" r="5" fill="#D4B483" opacity="0.9"/>
+        <path d="M16 38 Q16 34 20 32" stroke="#F5EFE0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 38 Q36 34 32 32" stroke="#F5EFE0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="lm-word">Continuum</div><div class="lm-div"></div><div class="lm-sub">Valley</div>
+      <div style="font-size:9px;color:var(--sage-light);opacity:0.6;margin-top:10px;letter-spacing:0.2em;text-transform:uppercase;">Sage Variant</div>
+    </div>
+    <div class="logo-mini-card lm-terra">
+      <svg width="36" height="36" viewBox="0 0 52 52" fill="none">
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#FDFAF5" opacity="0.15"/>
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#FDFAF5" stroke-width="1.5" fill="none"/>
+        <circle cx="26" cy="15" r="5" fill="#FDFAF5" opacity="0.8"/>
+        <path d="M16 38 Q16 34 20 32" stroke="#FDFAF5" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 38 Q36 34 32 32" stroke="#FDFAF5" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="lm-word">Continuum</div><div class="lm-div"></div><div class="lm-sub">Valley</div>
+      <div style="font-size:9px;color:var(--cream-dark);opacity:0.6;margin-top:10px;letter-spacing:0.2em;text-transform:uppercase;">Terra Bold</div>
+    </div>
+    <div class="logo-mini-card lm-cream">
+      <svg width="36" height="36" viewBox="0 0 52 52" fill="none">
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#3D2B1F" opacity="0.1"/>
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#4F5E45" stroke-width="1.5" fill="none"/>
+        <circle cx="26" cy="15" r="5" fill="#C4714A" opacity="0.85"/>
+        <path d="M16 38 Q16 34 20 32" stroke="#4F5E45" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 38 Q36 34 32 32" stroke="#4F5E45" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="lm-word">Continuum</div><div class="lm-div"></div><div class="lm-sub">Valley</div>
+      <div style="font-size:9px;color:var(--sage);opacity:0.7;margin-top:10px;letter-spacing:0.2em;text-transform:uppercase;">Cream Light</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:20px;">
+    <div class="id-label" style="margin-bottom:8px;">Logo Usage Rules</div>
+    <p style="font-size:13px;color:var(--soil-light);line-height:1.7;">
+      <strong style="color:var(--soil);">Profile Picture:</strong> Dark (soil) version always.<br>
+      <strong style="color:var(--soil);">Video Watermark:</strong> Cream or Sage version on dark footage.<br>
+      <strong style="color:var(--soil);">Post Overlays:</strong> Cream version on dark backgrounds, Dark version on light/cream backgrounds.<br>
+      <strong style="color:var(--soil);">Never:</strong> Stretch the logo, change colors outside the palette, or use on a busy background without a container.
+    </p>
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 05 BRAND VOICE -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="voice">
+  <div class="sec-header">
+    <span class="sec-num">05</span>
+    <h2 class="sec-title">Brand Voice & Content Tone</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+    <div class="card">
+      <div class="id-label" style="margin-bottom:10px;">Personality</div>
+      <p style="font-size:14px;color:var(--soil-light);line-height:1.7;">
+        Warm but purposeful. You're a <strong style="color:var(--soil);">community organizer who speaks like a neighbor</strong> — not a corporation. You're passionate about food access without being preachy. Confident in the mission. Inclusive always.
+      </p>
+    </div>
+    <div class="card">
+      <div class="id-label" style="margin-bottom:10px;">Aesthetic Feel</div>
+      <p style="font-size:14px;color:var(--soil-light);line-height:1.7;">
+        <strong style="color:var(--soil);">Organic · Grounded · Elevated.</strong> Think a beautiful farmers market that also happens to be a movement. Not rustic-shabby, not sterile corporate — <em>earthy luxury for the people.</em>
+      </p>
+    </div>
+  </div>
+
+  <div class="voice-grid">
+    <div class="voice-item yes">
+      <div class="voice-tag">✓ Your Voice Is</div>
+      <ul class="voice-list">
+        <li>Warm, direct, community-first</li>
+        <li>Storytelling-driven ("Let me show you something…")</li>
+        <li>Empowering without being preachy</li>
+        <li>Celebratory of local produce & farmers</li>
+        <li>Inclusive — speaks to ALL income levels</li>
+        <li>Visionary ("This is just the beginning…")</li>
+        <li>Conversational but intentional</li>
+      </ul>
+    </div>
+    <div class="voice-item no">
+      <div class="voice-tag">✕ Your Voice Is Not</div>
+      <ul class="voice-list">
+        <li>Corporate or salesy</li>
+        <li>Elitist wellness-culture gatekeeping</li>
+        <li>Preachy about eating habits</li>
+        <li>Overly formal or stiff</li>
+        <li>Trend-chasing or inauthentic</li>
+        <li>Exclusive or intimidating</li>
+        <li>Performative activism</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-top:20px; display:flex; flex-direction:column; gap:12px;">
+    <div class="id-label">Signature Phrases & Openers (copy-paste ready)</div>
+    <div class="copy-box" onclick="copyText(this)">
+      <span class="copy-hint">tap to copy</span>
+      <span class="copied-msg">Copied!</span>
+      <p>"This is what food access looks like when a community decides to show up for itself. 🌿"</p>
+    </div>
+    <div class="copy-box" onclick="copyText(this)">
+      <span class="copy-hint">tap to copy</span>
+      <span class="copied-msg">Copied!</span>
+      <p>"Fresh shouldn't be a luxury. At Continuum Valley, it never will be."</p>
+    </div>
+    <div class="copy-box" onclick="copyText(this)">
+      <span class="copy-hint">tap to copy</span>
+      <span class="copied-msg">Copied!</span>
+      <p>"We're not just building a market. We're building a movement. 🌱"</p>
+    </div>
+    <div class="copy-box" onclick="copyText(this)">
+      <span class="copy-hint">tap to copy</span>
+      <span class="copied-msg">Copied!</span>
+      <p>"Your table starts here. And so does something bigger."</p>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 06 CONTENT PILLARS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="pillars">
+  <div class="sec-header">
+    <span class="sec-num">06</span>
+    <h2 class="sec-title">Content Pillars</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar p1">
+      <div class="pillar-num">01</div>
+      <div class="pillar-name">Community Stories</div>
+      <div class="pillar-desc">Real people. Local vendors. Neighbors helping neighbors. Human moments that show the heart of the valley.</div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-num">02</div>
+      <div class="pillar-name">Fresh &amp; Seasonal</div>
+      <div class="pillar-desc">What's in season, what's affordable right now, market finds. Educational but never condescending.</div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-num">03</div>
+      <div class="pillar-name">Behind the Vision</div>
+      <div class="pillar-desc">The founder's journey. Building the franchise. Transparency about what it takes to create food access.</div>
+    </div>
+    <div class="pillar p4">
+      <div class="pillar-num">04</div>
+      <div class="pillar-name">Quick Tips &amp; Recipes</div>
+      <div class="pillar-desc">Fast, accessible, budget-friendly cooking. How to stretch fresh produce. Practical value every week.</div>
+    </div>
+    <div class="pillar p5">
+      <div class="pillar-num">05</div>
+      <div class="pillar-name">The Movement</div>
+      <div class="pillar-desc">Food justice. Community building. Why this matters. Inspirational content that calls people into the mission.</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 07 PLATFORM BIOS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="bios">
+  <div class="sec-header">
+    <span class="sec-num">07</span>
+    <h2 class="sec-title">Platform Bios — Copy &amp; Paste Ready</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="bio-stack">
+
+    <!-- TIKTOK -->
+    <div class="bio-card">
+      <div class="bio-top">
+        <div class="bio-platform-icon tiktok">T</div>
+        <div>
+          <div class="bio-platform-name">TikTok</div>
+          <div class="bio-handle">@continuumvalley</div>
+        </div>
+      </div>
+      <div class="bio-body">
+        <div class="bio-display">Display Name (copy this exactly):</div>
+        <div class="copy-box plain" onclick="copyText(this)" style="margin-bottom:14px;">
+          <span class="copy-hint">tap to copy</span><span class="copied-msg">Copied!</span>
+          <p>Continuum Valley 🌿</p>
+        </div>
+        <div class="bio-display">Bio (copy this exactly):</div>
+        <div class="copy-box plain" onclick="copyText(this)">
+          <span class="copy-hint">tap to copy</span><span class="copied-msg">Copied!</span>
+          <p>🌱 Community Farm Market<br>
+Fresh produce. Affordable prices. Built for everyone.<br>
+Where the valley feeds the village 🌾<br>
+📍 Coming to your community<br>
+🔗 [your link here]</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSTAGRAM -->
+    <div class="bio-card">
+      <div class="bio-top">
+        <div class="bio-platform-icon instagram">IG</div>
+        <div>
+          <div class="bio-platform-name">Instagram</div>
+          <div class="bio-handle">@continuumvalley</div>
+        </div>
+      </div>
+      <div class="bio-body">
+        <div class="bio-display">Display Name (copy this exactly):</div>
+        <div class="copy-box plain" onclick="copyText(this)" style="margin-bottom:14px;">
+          <span class="copy-hint">tap to copy</span><span class="copied-msg">Copied!</span>
+          <p>Continuum Valley 🌿</p>
+        </div>
+        <div class="bio-display">Bio (copy this exactly):</div>
+        <div class="copy-box plain" onclick="copyText(this)">
+          <span class="copy-hint">tap to copy</span><span class="copied-msg">Copied!</span>
+          <p>🌿 Community Farm Market
+🌾 Affordable fresh produce for every family
+🤝 Building food access, one neighborhood at a time
+✨ Where the valley feeds the village
+📍 Franchise coming soon
+👇 Join the movement</p>
+        </div>
+        <div class="bio-display" style="margin-top:14px;">Instagram Category Tag:</div>
+        <div class="copy-box plain" onclick="copyText(this)">
+          <span class="copy-hint">tap to copy</span><span class="copied-msg">Copied!</span>
+          <p>Farmers Market</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HASHTAG BANK -->
+    <div class="bio-card">
+      <div class="bio-top">
+        <div class="bio-platform-icon" style="background:var(--sage-dark);">#</div>
+        <div>
+          <div class="bio-platform-name">Hashtag Bank</div>
+          <div class="bio-handle">Use 3–5 per TikTok · Up to 30 on Instagram</div>
+        </div>
+      </div>
+      <div class="bio-body">
+        <div class="bio-display">Core Brand Hashtags:</div>
+        <div class="copy-box plain" onclick="copyText(this)" style="margin-bottom:14px;">
+          <span class="copy-hint">tap to copy</span><span class="copied-msg">Copied!</span>
+          <p>#ContinuumValley #ValleyFeedsTheVillage #CommunityFarmMarket</p>
+        </div>
+        <div class="bio-display">Content Hashtags (rotate these):</div>
+        <div class="copy-box plain" onclick="copyText(this)">
+          <span class="copy-hint">tap to copy</span><span class="copied-msg">Copied!</span>
+          <p>#FarmersMarket #FreshProduce #FoodAccess #CommunityFirst #AffordableFresh #LocalMarket #FarmToTable #FoodJustice #FreshForAll #SupportLocal #MarketDay #EatFresh #ProduceLover #CommunityBuilding #HealthyOnABudget #FreshIsForEveryone #FarmersMarketFinds #GrowTogether #FoodForAll #NourishYourCommunity</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 08 POSTING SCHEDULE -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="schedule">
+  <div class="sec-header">
+    <span class="sec-num">08</span>
+    <h2 class="sec-title">Weekly Posting Schedule</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="schedule-grid">
+    <div class="day-cell accent">
+      <div class="day-name">Mon</div>
+      <div class="day-content">Market Monday 🌿<br>Show what's fresh this week</div>
+    </div>
+    <div class="day-cell active">
+      <div class="day-name">Tue</div>
+      <div class="day-content">Quick Tip or Recipe 🍋<br>Value content</div>
+    </div>
+    <div class="day-cell">
+      <div class="day-name">Wed</div>
+      <div class="day-content">Rest day or Stories only</div>
+    </div>
+    <div class="day-cell active">
+      <div class="day-name">Thu</div>
+      <div class="day-content">Behind the Vision 🌱<br>Founder / journey</div>
+    </div>
+    <div class="day-cell accent">
+      <div class="day-name">Fri</div>
+      <div class="day-content">Community Story 🤝<br>People & movement</div>
+    </div>
+    <div class="day-cell active">
+      <div class="day-name">Sat</div>
+      <div class="day-content">Market Day content 🛒<br>Real footage or tips</div>
+    </div>
+    <div class="day-cell">
+      <div class="day-name">Sun</div>
+      <div class="day-content">Rest or engagement replies only</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:20px;">
+    <div class="id-label" style="margin-bottom:8px;">Best Posting Times</div>
+    <p style="font-size:13px;color:var(--soil-light);line-height:1.8;">
+      <strong style="color:var(--soil);">TikTok:</strong> 7–9 AM, 12–2 PM, 7–9 PM (your audience's timezone)<br>
+      <strong style="color:var(--soil);">Instagram Reels:</strong> 9–11 AM, 6–8 PM<br>
+      <strong style="color:var(--soil);">Instagram Stories:</strong> Daily — morning check-in + evening poll/question<br>
+      <strong style="color:var(--soil);">Rule:</strong> Consistency beats frequency. 4 great posts beats 7 rushed ones every time.
+    </p>
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 09 WEEK 1 LAUNCH CALENDAR -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="calendar">
+  <div class="sec-header">
+    <span class="sec-num">09</span>
+    <h2 class="sec-title">Week 1 Launch Content Calendar</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div style="display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#3badb5;"><div style="width:12px;height:12px;border-radius:3px;background:#69C9D0;"></div> TikTok</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:#DD2A7B;"><div style="width:12px;height:12px;border-radius:3px;background:#DD2A7B;"></div> Instagram</div>
+    <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--terracotta);"><div style="width:12px;height:12px;border-radius:3px;background:var(--terracotta);"></div> Both Platforms</div>
+  </div>
+
+  <div class="cal-grid">
+
+    <!-- DAY 1 - MON -->
+    <div class="cal-day">
+      <div class="cal-date"><div class="cal-day-name">Monday</div><div class="cal-day-num">01</div></div>
+      <div class="cal-items">
+        <div class="cal-post post-both">
+          <div class="cal-post-plat">TikTok + Instagram Reel</div>
+          <div class="cal-post-title">🌿 Welcome to Continuum Valley</div>
+          <div class="cal-post-desc">Brand intro video. Who we are, what we're building, why it matters. Show the logo, the colors, the energy.</div>
+          <div class="cal-post-hook">"We're building something your neighborhood has never seen before. And you're getting a front row seat." 🌾</div>
+        </div>
+        <div class="cal-post post-ig">
+          <div class="cal-post-plat">Instagram Story</div>
+          <div class="cal-post-title">Poll: "What's the #1 thing missing from your local market?"</div>
+          <div class="cal-post-desc">Engagement from day one. Builds community voice.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 2 - TUE -->
+    <div class="cal-day">
+      <div class="cal-date"><div class="cal-day-name">Tuesday</div><div class="cal-day-num">02</div></div>
+      <div class="cal-items">
+        <div class="cal-post post-tiktok">
+          <div class="cal-post-plat">TikTok</div>
+          <div class="cal-post-title">💰 5 Fresh Produce Items Under $10</div>
+          <div class="cal-post-desc">Quick value tip. Show real produce, real prices. This is your most shareable early content type.</div>
+          <div class="cal-post-hook">"Fresh on a budget isn't impossible — let me show you what $10 gets you this week."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 3 - WED -->
+    <div class="cal-day">
+      <div class="cal-date"><div class="cal-day-name">Wednesday</div><div class="cal-day-num">03</div></div>
+      <div class="cal-items">
+        <div class="cal-post post-ig">
+          <div class="cal-post-plat">Instagram</div>
+          <div class="cal-post-title">🖼️ Brand card post — "Fresh is not a privilege."</div>
+          <div class="cal-post-desc">Beautiful graphic using your cream background + Playfair Display quote. No video needed. Pure aesthetic.</div>
+        </div>
+        <div class="cal-post post-ig">
+          <div class="cal-post-plat">Instagram Story</div>
+          <div class="cal-post-title">"Where would you want a Continuum Valley near you?" + Location sticker</div>
+          <div class="cal-post-desc">Starts planting the franchise seed. Great for saves + shares.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 4 - THU -->
+    <div class="cal-day">
+      <div class="cal-date"><div class="cal-day-name">Thursday</div><div class="cal-day-num">04</div></div>
+      <div class="cal-items">
+        <div class="cal-post post-both">
+          <div class="cal-post-plat">TikTok + Instagram Reel</div>
+          <div class="cal-post-title">🌱 Behind the Vision — Why I'm Building This</div>
+          <div class="cal-post-desc">Personal founder story. Emotional, real, and vision-forward. This is your most vulnerable post and will likely perform best.</div>
+          <div class="cal-post-hook">"Nobody told me building a farm market would feel this personal. Here's why I can't stop." 🌿</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 5 - FRI -->
+    <div class="cal-day">
+      <div class="cal-date"><div class="cal-day-name">Friday</div><div class="cal-day-num">05</div></div>
+      <div class="cal-items">
+        <div class="cal-post post-tiktok">
+          <div class="cal-post-plat">TikTok</div>
+          <div class="cal-post-title">🍅 What Does "Community Farm Market" Actually Mean?</div>
+          <div class="cal-post-desc">Educational explainer. Debunk the idea that farm markets are only for wealthy neighborhoods. Clear the path.</div>
+          <div class="cal-post-hook">"Most people think farmers markets are for one type of neighborhood. Let me change that."</div>
+        </div>
+        <div class="cal-post post-ig">
+          <div class="cal-post-plat">Instagram Story</div>
+          <div class="cal-post-title">Q&A: "Ask me anything about Continuum Valley"</div>
+          <div class="cal-post-desc">Question box sticker. Builds authentic connection + gives you content ideas.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 6 - SAT -->
+    <div class="cal-day">
+      <div class="cal-date"><div class="cal-day-name">Saturday</div><div class="cal-day-num">06</div></div>
+      <div class="cal-items">
+        <div class="cal-post post-both">
+          <div class="cal-post-plat">TikTok + Instagram Reel</div>
+          <div class="cal-post-title">🛒 Market Day Vlog / Walkthrough</div>
+          <div class="cal-post-desc">Real footage from any market, grocery, or produce stand. Show the vision even before the physical market exists. Overlay your branding.</div>
+          <div class="cal-post-hook">"This is what Continuum Valley will feel like every single week. Come with me." 🌿</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY 7 - SUN -->
+    <div class="cal-day">
+      <div class="cal-date"><div class="cal-day-name">Sunday</div><div class="cal-day-num">07</div></div>
+      <div class="cal-items">
+        <div class="cal-post post-ig">
+          <div class="cal-post-plat">Instagram</div>
+          <div class="cal-post-title">🌾 "Your table starts here." — Brand close card</div>
+          <div class="cal-post-desc">Beautiful brand graphic to close the week. Quote + logo + tagline. Encourage follows and shares. Recap the week's energy.</div>
+        </div>
+        <div class="cal-post post-ig">
+          <div class="cal-post-plat">Instagram Story</div>
+          <div class="cal-post-title">Week 1 Recap — Thank your new followers personally</div>
+          <div class="cal-post-desc">"We grew a whole community in one week. Look at us." Genuine gratitude converts followers to fans.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 10 MONETIZATION ROADMAP -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="monetize">
+  <div class="sec-header">
+    <span class="sec-num">10</span>
+    <h2 class="sec-title">Monetization Roadmap</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="mono-phases">
+
+    <div class="mono-phase">
+      <div class="mono-phase-header ph1">
+        <div>
+          <div class="mono-phase-num">Phase 01</div>
+          <div class="mono-phase-title">Build the Foundation</div>
+        </div>
+        <div class="mono-phase-follow">0 → 1K followers</div>
+      </div>
+      <div class="mono-phase-body">
+        <div class="mono-stream">
+          <div class="mono-stream-name">Digital Products</div>
+          <div class="mono-stream-desc">Sell a "Start Your Market" guide PDF or community food access toolkit. $9–$27. Low lift, immediate income.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Email List Building</div>
+          <div class="mono-stream-desc">Free "Fresh on a Budget" weekly guide in exchange for email. This list becomes your most valuable asset for franchise sales.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Community Pre-Launch</div>
+          <div class="mono-stream-desc">Sell founding member spots, t-shirts, or market bags with the brand. Social proof + revenue before doors open.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">TikTok Creator Fund</div>
+          <div class="mono-stream-desc">Apply once you hit 1K followers + 100K views. Small income but validates the account. Activate Series feature to gate content.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mono-phase">
+      <div class="mono-phase-header ph2">
+        <div>
+          <div class="mono-phase-num">Phase 02</div>
+          <div class="mono-phase-title">Grow &amp; Monetize the Audience</div>
+        </div>
+        <div class="mono-phase-follow">1K → 10K followers</div>
+      </div>
+      <div class="mono-phase-body">
+        <div class="mono-stream">
+          <div class="mono-stream-name">Brand Partnerships</div>
+          <div class="mono-stream-desc">Partner with produce brands, sustainable packaging companies, or local food orgs. Charge $150–$500 per sponsored post at this stage.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Community Membership</div>
+          <div class="mono-stream-desc">Launch a Patreon or paid community ($7–$15/mo) with exclusive market tips, early franchise news, and community access.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Pop-Up Market Events</div>
+          <div class="mono-stream-desc">Host branded pop-up produce markets. Charge vendor fees ($50–$200/vendor). Film for content — the market funds itself.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Affiliate Income</div>
+          <div class="mono-stream-desc">Affiliate links for kitchen tools, storage containers, Imperfect Foods, Misfits Market, etc. Passive income on every post.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mono-phase">
+      <div class="mono-phase-header ph3">
+        <div>
+          <div class="mono-phase-num">Phase 03</div>
+          <div class="mono-phase-title">Scale to Franchise</div>
+        </div>
+        <div class="mono-phase-follow">10K → 100K+ followers</div>
+      </div>
+      <div class="mono-phase-body">
+        <div class="mono-stream">
+          <div class="mono-stream-name">Franchise License Sales</div>
+          <div class="mono-stream-desc">Sell Continuum Valley franchise territories. Initial fee $5K–$25K per license. The social following becomes your sales funnel.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Speaking &amp; Consulting</div>
+          <div class="mono-stream-desc">Food access, community building, and franchise development speaking. $500–$3,000 per appearance. Your story IS the product.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Major Brand Sponsorships</div>
+          <div class="mono-stream-desc">Negotiate $2K–$10K+ deals with national brands in food, wellness, and community impact space.</div>
+        </div>
+        <div class="mono-stream">
+          <div class="mono-stream-name">Physical Market Revenue</div>
+          <div class="mono-stream-desc">Vendor fees, market memberships, branded merchandise, and community events. The digital audience drives the physical foot traffic.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="divider"></div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- 11 REVENUE PROJECTIONS -->
+<!-- ══════════════════════════════════════ -->
+<div class="section" id="revenue">
+  <div class="sec-header">
+    <span class="sec-num">11</span>
+    <h2 class="sec-title">Estimated Monthly Revenue</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <div style="overflow-x:auto; border-radius:16px; box-shadow: 0 2px 20px rgba(61,43,31,0.08);">
+    <table class="rev-table">
+      <thead>
+        <tr>
+          <th>Milestone</th>
+          <th>Revenue Streams Active</th>
+          <th>Est. Monthly Revenue</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="milestone">0 – 500 Followers</td>
+          <td>Digital products, merch pre-sales</td>
+          <td class="range">$0 – $300</td>
+          <td class="note">Planting seeds. Every sale validates the concept.</td>
+        </tr>
+        <tr class="highlight">
+          <td class="milestone">1K Followers</td>
+          <td>+ TikTok fund, small brand deals, email list</td>
+          <td class="range">$200 – $700</td>
+          <td class="note">TikTok unlocks monetization features here.</td>
+        </tr>
+        <tr>
+          <td class="milestone">5K Followers</td>
+          <td>+ Memberships, affiliate, pop-up events</td>
+          <td class="range">$500 – $2,000</td>
+          <td class="note">Audience is now a real asset. Partnerships possible.</td>
+        </tr>
+        <tr class="highlight">
+          <td class="milestone">10K Followers</td>
+          <td>+ Paid sponsorships, speaking inquiries</td>
+          <td class="range">$1,500 – $5,000</td>
+          <td class="note">This is where it gets serious. Brands come to you.</td>
+        </tr>
+        <tr>
+          <td class="milestone">50K Followers</td>
+          <td>+ Major brand deals, franchise interest</td>
+          <td class="range">$4,000 – $12,000</td>
+          <td class="note">Franchise conversations become real. Speaking gigs come in.</td>
+        </tr>
+        <tr class="highlight">
+          <td class="milestone">100K Followers</td>
+          <td>Full stack: all streams active</td>
+          <td class="range">$10,000 – $30,000+</td>
+          <td class="note">Franchise sales alone can exceed this. This is a business.</td>
+        </tr>
+        <tr>
+          <td class="milestone">500K+ Followers</td>
+          <td>National brand deals + franchise royalties</td>
+          <td class="range">$30,000 – $100,000+</td>
+          <td class="note">At scale, franchise royalties become the dominant income.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="rev-disclaimer">* Revenue ranges are estimates based on average creator monetization data combined with product/franchise income potential. Results depend on audience engagement, consistency, and business execution. These figures represent realistic ranges — not guarantees.</p>
+
+  <div class="card-dark" style="margin-top:24px;">
+    <div style="position:relative;z-index:2;">
+      <div class="id-label" style="color:var(--terracotta-light);margin-bottom:12px;">The Continuum Valley Advantage</div>
+      <p style="color:var(--cream);font-size:14px;line-height:1.8;font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;">
+        Most brands sell products. You're selling a <strong style="font-style:normal;">movement</strong> that happens to have products. The franchise model means your ceiling isn't tied to follower count — it's tied to how many communities want a Continuum Valley. That's unlimited.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <p>Continuum Valley Complete Brand Bible · Confidential · Built to Grow · All Rights Reserved</p>
+</div>
+
+<script>
+function copyText(el) {
+  const p = el.querySelector('p');
+  const text = p ? p.innerText : '';
+  navigator.clipboard.writeText(text).then(() => {
+    const hint = el.querySelector('.copy-hint');
+    const msg  = el.querySelector('.copied-msg');
+    if (hint) hint.style.display = 'none';
+    if (msg)  msg.style.display  = 'block';
+    setTimeout(() => {
+      if (hint) hint.style.display = 'block';
+      if (msg)  msg.style.display  = 'none';
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

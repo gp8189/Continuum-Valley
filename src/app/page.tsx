@@ -167,8 +167,12 @@ export default function Home() {
         body { font-family: 'Manrope', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
         body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.13 0 0 0 0 0.10 0 0 0 0 0.07 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity: 0.32; pointer-events: none; z-index: 1; mix-blend-mode: multiply; }
         nav { padding: 1.75rem 2rem; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 10; max-width: 1280px; margin: 0 auto; }
-        .logo { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.4rem; letter-spacing: -0.02em; color: var(--forest); display: flex; align-items: center; gap: 0.65rem; cursor: pointer; user-select: none; text-decoration: none; }
-        .logo-mark { width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .logo { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.4rem; letter-spacing: -0.02em; color: var(--forest); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; user-select: none; text-decoration: none; }
+        .logo-mark { width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--forest); border-radius: 50%; padding: 8px; }
+        .logo-mark svg { width: 100%; height: 100%; display: block; }
+        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-name { font-family: 'Fraunces', serif; font-weight: 500; font-size: 1.15rem; letter-spacing: -0.02em; color: var(--forest); }
+        .logo-tagline { font-family: 'Manrope', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--moss); }
         .logo em { font-style: italic; font-weight: 400; }
         .nav-links { display: flex; gap: 2.5rem; list-style: none; font-size: 0.92rem; font-weight: 500; }
         .nav-links a { color: var(--ink-soft); text-decoration: none; transition: color 0.3s; }
@@ -409,14 +413,18 @@ export default function Home() {
         <a className="logo" href="#" title="Triple-click to admin" onClick={handleLogoClick}>
           <span className="logo-mark">
             <svg viewBox="0 0 52 52" fill="none">
-              <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#7A8C6E" opacity="0.22"/>
-              <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#4F5E45" strokeWidth="1.6" fill="none" strokeLinejoin="round"/>
-              <circle cx="26" cy="15" r="5" fill="#C4714A"/>
-              <path d="M16 38 Q16 34 20 32" stroke="#4F5E45" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-              <path d="M36 38 Q36 34 32 32" stroke="#4F5E45" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+              <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#7A8C6E" opacity="0.35"/>
+              <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#A8B99A" strokeWidth="1.6" fill="none" strokeLinejoin="round"/>
+              <circle cx="26" cy="15" r="5" fill="#C4714A" opacity="0.9"/>
+              <line x1="4" y1="40" x2="48" y2="40" stroke="#F5EFE0" strokeWidth="1.2" opacity="0.2"/>
+              <path d="M16 38 Q16 34 20 32" stroke="#A8B99A" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+              <path d="M36 38 Q36 34 32 32" stroke="#A8B99A" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
             </svg>
           </span>
-          <span>Continuum <em>Valley</em></span>
+          <span className="logo-text">
+            <span className="logo-name">Continuum <em>Valley</em></span>
+            <span className="logo-tagline">Community Farm Market</span>
+          </span>
         </a>
         <ul className="nav-links">
           <li><a href="#origin">The Vision</a></li>
