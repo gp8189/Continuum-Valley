@@ -1,0 +1,15 @@
+{
+  "donorEmail": "hello@continuumvalley.com",
+  "investorEmail": "invest@continuumvalley.com",
+  "instagramUrl": "#",
+  "tiktokUrl": "#",
+  "youtubeUrl": "#",
+  "statuses": {
+    "foodProduction": "In Development",
+    "communityVenue": "In Development",
+    "educationHub": "Planned",
+    "mutualAid": "Planned",
+    "franchiseBlueprint": "Planned"
+  },
+  "adminPassword": "continuum2026"
+}

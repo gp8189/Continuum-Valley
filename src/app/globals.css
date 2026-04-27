@@ -123,6 +123,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Reset Next.js layout defaults for Continuum Valley */
+html, body { background: #F1E9D7 !important; }
 /* Hide Next.js dev indicator portal */
 nextjs-portal {
   display: none !important;

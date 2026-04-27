@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Continuum Valley — Feeding Generations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F1E9D7;
+    --cream-deep: #E8DDC4;
+    --forest: #1F3025;
+    --forest-deep: #14201A;
+    --moss: #4A5D43;
+    --sage: #8FA382;
+    --clay: #C5683C;
+    --clay-deep: #A8512B;
+    --ink: #221913;
+    --ink-soft: #4A3F35;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.13 0 0 0 0 0.10 0 0 0 0 0.07 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.32;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  /* ── NAV ── */
+  nav {
+    padding: 1.75rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    color: var(--forest);
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 36px; height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-mark svg { width: 100%; height: 100%; display: block; }
+  .logo em { font-style: italic; font-weight: 400; }
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--clay); }
+  .nav-cta {
+    background: var(--forest);
+    color: var(--cream) !important;
+    padding: 0.7rem 1.5rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--clay); transform: translateY(-1px); }
+  @media (max-width: 768px) { .nav-links { display: none; } }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 4rem 2rem 7rem;
+    position: relative;
+    max-width: 1280px;
+    margin: 0 auto;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+  .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--moss); }
+  h1.hero-headline {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    line-height: 0.97;
+    letter-spacing: -0.035em;
+    color: var(--forest);
+    margin-bottom: 2rem;
+    max-width: 16ch;
+    animation: fadeUp 0.9s ease 0.2s both;
+  }
+  h1.hero-headline em { font-style: italic; font-weight: 300; color: var(--clay); }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 50ch;
+    margin-bottom: 3rem;
+    line-height: 1.7;
+    animation: fadeUp 1s ease 0.35s both;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 1.1s ease 0.5s both;
+  }
+  .btn-primary, .btn-secondary {
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .btn-primary { background: var(--clay); color: var(--cream); border-color: var(--clay); }
+  .btn-primary:hover { background: var(--clay-deep); border-color: var(--clay-deep); transform: translateY(-2px); }
+  .btn-secondary { color: var(--forest); border-color: var(--forest); background: transparent; }
+  .btn-secondary:hover { background: var(--forest); color: var(--cream); }
+  .hero-deco {
+    position: absolute;
+    top: 5rem; right: 2rem;
+    width: 360px; max-width: 33%;
+    opacity: 0.8;
+    animation: fadeIn 1.4s ease 0.6s both, gentleFloat 8s ease-in-out 1.5s infinite;
+    z-index: 0;
+  }
+  @media (max-width: 900px) { .hero-deco { display: none; } }
+
+  /* ── MISSION BAND ── */
+  .mission-band {
+    background: var(--clay);
+    padding: 3.5rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  .mission-band-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .mission-icon {
+    font-size: 2.8rem;
+    flex-shrink: 0;
+  }
+  .mission-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--cream);
+    letter-spacing: -0.02em;
+  }
+  .mission-text em {
+    font-style: italic;
+    font-weight: 300;
+    opacity: 0.85;
+  }
+  @media (max-width: 600px) {
+    .mission-band-inner { flex-direction: column; text-align: center; gap: 1rem; }
+  }
+
+  /* ── ORIGIN ── */
+  .origin {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 7rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  .origin::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sage), transparent);
+  }
+  .origin-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .origin-grid { grid-template-columns: 1fr; gap: 2rem; } }
+  .section-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--sage); }
+  .origin-text h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+  }
+  .origin-text h2 em { font-style: italic; color: var(--clay); font-weight: 300; }
+  .origin-text p {
+    font-size: 1.1rem;
+    color: rgba(241, 233, 215, 0.78);
+    margin-bottom: 1.5rem;
+    max-width: 60ch;
+    line-height: 1.75;
+  }
+  .pull-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.45;
+    color: var(--cream);
+    border-left: 2px solid var(--clay);
+    padding-left: 1.5rem;
+    margin-top: 2.5rem;
+    max-width: 38ch;
+  }
+
+  /* ── PILLARS ── */
+  .pillars {
+    padding: 7rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+  .pillars-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+    align-items: end;
+  }
+  @media (max-width: 768px) { .pillars-header { grid-template-columns: 1fr; gap: 1.5rem; } }
+  .pillar-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--moss);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .pillar-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--moss); }
+  .pillars h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.6rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--forest);
+    margin-top: 1rem;
+  }
+  .pillars h2 em { font-style: italic; color: var(--clay); font-weight: 300; }
+  .pillars-intro { font-size: 1.05rem; color: var(--ink-soft); max-width: 42ch; line-height: 1.7; }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  @media (max-width: 900px) { .pillar-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .pillar-grid { grid-template-columns: 1fr; } }
+  .pillar {
+    background: var(--cream-deep);
+    padding: 2.5rem 2rem;
+    border-radius: 4px;
+    border: 1px solid rgba(31, 48, 37, 0.08);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+  }
+  .pillar:hover { background: var(--forest); transform: translateY(-4px); }
+  .pillar:hover .pillar-num,
+  .pillar:hover .pillar-title,
+  .pillar:hover .pillar-desc { color: var(--cream); }
+  .pillar:hover .pillar-num { color: var(--clay); }
+  .pillar-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 3rem;
+    color: var(--clay);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    transition: color 0.5s ease;
+  }
+  .pillar-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+    transition: color 0.5s ease;
+  }
+  .pillar-desc { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; transition: color 0.5s ease; }
+
+  /* ── FLAGSHIP ── */
+  .flagship {
+    background: var(--cream-deep);
+    padding: 7rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  .flagship-inner { max-width: 1280px; margin: 0 auto; }
+
+  /* Mission Statement inside flagship */
+  .mission-statement-block {
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 8px;
+    padding: 3rem 3.5rem;
+    margin-bottom: 5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .mission-statement-block::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--clay);
+  }
+  .mission-statement-block::after {
+    content: '';
+    position: absolute;
+    top: -60%; right: -5%;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(197,104,60,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .mission-quote-mark {
+    font-family: 'Fraunces', serif;
+    font-size: 8rem;
+    line-height: 0.7;
+    color: var(--clay);
+    opacity: 0.4;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  .mission-statement-text {
+    position: relative;
+    z-index: 2;
+  }
+  .mission-statement-text p {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    color: var(--cream);
+    font-style: italic;
+  }
+  .mission-statement-text p strong {
+    font-style: normal;
+    font-weight: 600;
+    color: #E8956A;
+  }
+  .mission-statement-text span {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.88rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  @media (max-width: 640px) {
+    .mission-statement-block { flex-direction: column; gap: 0; padding: 2rem; }
+    .mission-quote-mark { font-size: 4rem; }
+  }
+
+  .flagship-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 3.5rem;
+    align-items: end;
+  }
+  @media (max-width: 768px) { .flagship-header { grid-template-columns: 1fr; gap: 1.5rem; } }
+  .flagship-tag {
+    display: inline-block;
+    background: var(--clay);
+    color: var(--cream);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  .flagship-header h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--forest);
+    margin-top: 0.75rem;
+  }
+  .flagship-header h2 em { font-style: italic; color: var(--clay); font-weight: 300; }
+  .flagship-intro { font-size: 1.05rem; color: var(--ink-soft); max-width: 44ch; line-height: 1.7; }
+  .flagship-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 900px) { .flagship-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .flagship-grid { grid-template-columns: 1fr; } }
+  .flagship-item {
+    background: var(--forest);
+    color: var(--cream);
+    padding: 2rem 1.75rem;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .flagship-item:hover { transform: translateY(-4px); }
+  .flagship-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--clay);
+  }
+  .flagship-item-icon { font-size: 1.6rem; margin-bottom: 1rem; display: block; }
+  .flagship-item-title {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+  }
+  .flagship-item-desc { font-size: 0.9rem; color: rgba(241,233,215,0.72); line-height: 1.6; }
+  .flagship-status {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    margin-top: 1rem;
+  }
+  .status-building { background: rgba(197,104,60,0.25); color: #E8956A; }
+  .status-planned { background: rgba(143,163,130,0.2); color: var(--sage); }
+  .flagship-item-cta {
+    background: var(--clay);
+  }
+  .flagship-item-cta::before { background: rgba(255,255,255,0.2); }
+
+  /* ── CTA ── */
+  .cta {
+    padding: 7rem 2rem;
+    max-width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+  .cta-card {
+    background: var(--forest);
+    color: var(--cream);
+    border-radius: 8px;
+    padding: 5rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -10%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, var(--moss) 0%, transparent 70%);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .cta-card::after {
+    content: '';
+    position: absolute;
+    bottom: -40%; right: -5%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, var(--clay) 0%, transparent 70%);
+    opacity: 0.22;
+    pointer-events: none;
+  }
+  .cta-content { position: relative; z-index: 2; }
+  .cta-card h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    max-width: 22ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta-card h2 em { font-style: italic; color: var(--clay); font-weight: 300; }
+  .cta-card p {
+    font-size: 1.1rem;
+    color: rgba(241, 233, 215, 0.75);
+    max-width: 52ch;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-cta-primary {
+    background: var(--clay);
+    color: var(--cream);
+    padding: 1.1rem 2.2rem;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1.5px solid var(--clay);
+  }
+  .btn-cta-primary:hover { background: var(--clay-deep); border-color: var(--clay-deep); transform: translateY(-2px); }
+  .btn-cta-secondary {
+    color: var(--cream);
+    padding: 1.1rem 2.2rem;
+    border-radius: 100px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1.5px solid rgba(241,233,215,0.5);
+  }
+  .btn-cta-secondary:hover { border-color: var(--cream); background: rgba(241,233,215,0.08); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 4rem 2rem 2rem;
+    position: relative;
+    z-index: 2;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(241, 233, 215, 0.1);
+  }
+  @media (max-width: 768px) { .footer-inner { grid-template-columns: 1fr; gap: 2rem; } }
+  .footer-logo-mark { width: 44px; height: 44px; display: block; margin-bottom: 1.25rem; }
+  .footer-brand h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+  .footer-brand h3 em { font-style: italic; color: var(--clay); }
+  .footer-brand p { color: rgba(241, 233, 215, 0.55); font-size: 0.95rem; max-width: 38ch; line-height: 1.65; }
+  .footer-col h4 {
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.6rem; }
+  .footer-col a {
+    color: rgba(241, 233, 215, 0.65);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+  }
+  .footer-col a:hover { color: var(--clay); }
+  .footer-col .coming-soon {
+    color: rgba(241,233,215,0.3);
+    font-size: 0.88rem;
+    font-style: italic;
+  }
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 2rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: rgba(241, 233, 215, 0.4);
+  }
+
+  /* ── REVEAL / ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 0.8; } }
+  @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.85s ease, transform 0.85s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── ADMIN OVERLAY ── */
+  #admin-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(20, 32, 26, 0.98);
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 2rem 1rem;
+    display: none;
+  }
+  #admin-overlay.active { display: block; }
+  .admin-box {
+    max-width: 720px;
+    margin: 2rem auto;
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  .admin-box h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    color: var(--forest);
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
+  }
+  .admin-box h2 em { font-style: italic; color: var(--clay); }
+  .admin-sub { color: var(--ink-soft); font-size: 0.94rem; margin-bottom: 2rem; }
+  .admin-section { border-top: 1px solid rgba(31,48,37,0.12); padding-top: 1.5rem; margin-top: 1.5rem; }
+  .admin-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .admin-section h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; color: var(--forest); margin-bottom: 1rem; font-weight: 500; }
+  .admin-field { margin-bottom: 1rem; }
+  .admin-field label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--moss);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .admin-field input, .admin-field textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid rgba(31,48,37,0.18);
+    border-radius: 6px;
+    background: white;
+    font-family: inherit;
+    font-size: 0.94rem;
+    color: var(--ink);
+    outline: none;
+    transition: border 0.2s;
+  }
+  .admin-field textarea { min-height: 80px; resize: vertical; }
+  .admin-field input:focus, .admin-field textarea:focus { border-color: var(--clay); }
+  .admin-pillar { background: var(--cream-deep); padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
+  .admin-pillar h4 {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+  .admin-actions {
+    position: sticky; bottom: 0;
+    background: var(--cream);
+    padding: 1.5rem 0 0;
+    margin-top: 2rem;
+    border-top: 2px solid var(--forest);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .admin-btn {
+    flex: 1; min-width: 130px;
+    padding: 0.9rem 1.2rem;
+    border: none;
+    border-radius: 100px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+  .admin-btn-primary { background: var(--forest); color: var(--cream); }
+  .admin-btn-primary:hover { background: var(--clay); }
+  .admin-btn-secondary { background: transparent; color: var(--forest); border: 1.5px solid var(--forest); }
+  .admin-btn-secondary:hover { background: var(--forest); color: var(--cream); }
+  .admin-btn-danger { background: transparent; color: var(--clay-deep); border: 1.5px solid var(--clay-deep); }
+  .admin-btn-danger:hover { background: var(--clay-deep); color: var(--cream); }
+  #generated-output {
+    width: 100%; margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(31,48,37,0.18);
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 0.74rem;
+    background: #fafafa;
+    min-height: 200px;
+    resize: vertical;
+    color: var(--ink);
+  }
+  .admin-note {
+    background: rgba(197,104,60,0.1);
+    border-left: 3px solid var(--clay);
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+  .admin-note strong { color: var(--forest); }
+</style>
+</head>
+<body>
+
+<!-- ADMIN OVERLAY -->
+<div id="admin-overlay">
+  <div class="admin-box" id="admin-login-box">
+    <h2>Admin <em>Access</em></h2>
+    <p class="admin-sub">Enter your password to edit Continuum Valley content.</p>
+    <div class="admin-field">
+      <label>Password</label>
+      <input type="password" id="admin-password-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')tryLogin()" />
+    </div>
+    <div class="admin-actions">
+      <button class="admin-btn admin-btn-primary" onclick="tryLogin()">Unlock</button>
+      <button class="admin-btn admin-btn-secondary" onclick="closeAdmin()">Cancel</button>
+    </div>
+  </div>
+  <div class="admin-box" id="admin-editor-box" style="display:none;">
+    <h2>Edit Your <em>Site</em></h2>
+    <p class="admin-sub">Type to update — preview changes live below. Click <strong>Generate Code</strong> then paste into Netlify.</p>
+    <div id="admin-form"></div>
+    <div class="admin-note">
+      <strong>To save:</strong> Click "Generate Code" → "Copy to Clipboard" → replace the file in Netlify with the new code.
+    </div>
+    <div class="admin-actions">
+      <button class="admin-btn admin-btn-primary" onclick="generateCode()">📋 Generate Code</button>
+      <button class="admin-btn admin-btn-secondary" onclick="copyCode(event)">Copy to Clipboard</button>
+      <button class="admin-btn admin-btn-danger" onclick="closeAdmin()">Close</button>
+    </div>
+    <textarea id="generated-output" placeholder="Your updated HTML will appear here..." readonly></textarea>
+  </div>
+</div>
+
+<!-- PUBLIC SITE -->
+
+<!-- NAV -->
+<nav>
+  <a class="logo" id="brand-logo" href="#" title="Triple-click to admin">
+    <span class="logo-mark">
+      <svg viewBox="0 0 52 52" fill="none">
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#7A8C6E" opacity="0.22"/>
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#4F5E45" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+        <circle cx="26" cy="15" r="5" fill="#C4714A"/>
+        <path d="M16 38 Q16 34 20 32" stroke="#4F5E45" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 38 Q36 34 32 32" stroke="#4F5E45" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </span>
+    <span>Continuum <em>Valley</em></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#origin">The Vision</a></li>
+    <li><a href="#pillars">The Model</a></li>
+    <li><a href="#flagship">The Flagship</a></li>
+    <li><a href="#join">Contact</a></li>
+  </ul>
+  <a href="#join" class="nav-cta">Investor Relations</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Flagship &amp; Franchise Model</div>
+  <h1 class="hero-headline">A farming system that <em>feeds generations.</em></h1>
+  <p class="hero-sub">Continuum Valley is a regenerative farming blueprint. We are building our flagship site to prove the model — creating a turnkey franchise system for farmers to deploy on their own land and feed their own communities.</p>
+  <div class="hero-actions">
+    <a href="#join" class="btn-primary">Become a Donor</a>
+    <a href="#join" class="btn-secondary">Inquire as Investor</a>
+  </div>
+  <!-- Decorative SVG -->
+  <svg class="hero-deco" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="150" fill="#C5683C" opacity="0.1"/>
+    <circle cx="200" cy="200" r="108" fill="none" stroke="#1F3025" stroke-width="1" opacity="0.35"/>
+    <g stroke="#1F3025" stroke-width="1.8" fill="none" stroke-linecap="round">
+      <path d="M200 320 Q200 220 200 130"/>
+      <path d="M180 290 Q175 250 178 220"/>
+      <path d="M220 290 Q225 250 222 220"/>
+      <path d="M165 270 Q158 235 162 210"/>
+      <path d="M235 270 Q242 235 238 210"/>
+    </g>
+    <g fill="#4A5D43">
+      <ellipse cx="195" cy="160" rx="6" ry="14" transform="rotate(-15 195 160)"/>
+      <ellipse cx="205" cy="155" rx="6" ry="14" transform="rotate(15 205 155)"/>
+      <ellipse cx="190" cy="180" rx="6" ry="14" transform="rotate(-15 190 180)"/>
+      <ellipse cx="210" cy="175" rx="6" ry="14" transform="rotate(15 210 175)"/>
+      <ellipse cx="185" cy="200" rx="6" ry="14" transform="rotate(-15 185 200)"/>
+      <ellipse cx="215" cy="195" rx="6" ry="14" transform="rotate(15 215 195)"/>
+    </g>
+    <g fill="#C5683C">
+      <circle cx="172" cy="225" r="5"/>
+      <circle cx="228" cy="225" r="5"/>
+      <circle cx="160" cy="245" r="4"/>
+      <circle cx="240" cy="245" r="4"/>
+    </g>
+    <path d="M100 320 Q200 310 300 320" stroke="#1F3025" stroke-width="1.5" fill="none" opacity="0.5"/>
+  </svg>
+</section>
+
+<!-- MISSION BAND -->
+<div class="mission-band">
+  <div class="mission-band-inner">
+    <div class="mission-icon">🌾</div>
+    <p class="mission-text">
+      <strong>No one should ever have to wonder where their next meal is coming from.</strong>
+      <em> That belief is the foundation of everything we build.</em>
+    </p>
+  </div>
+</div>
+
+<!-- ORIGIN -->
+<section class="origin" id="origin">
+  <div class="origin-grid">
+    <div class="reveal">
+      <div class="section-eyebrow">The Vision</div>
+    </div>
+    <div class="origin-text reveal">
+      <h2>The first site is <em>just the beginning.</em></h2>
+      <p>I am building the first Continuum Valley flagship to serve as a living laboratory. This site proves that regenerative agriculture can be profitable, replicable, and deeply connected to the local community.</p>
+      <p>Once the flagship is perfected, the Blueprint becomes our product — allowing other farmers to bypass the trial and error and start feeding their own generations immediately.</p>
+      <blockquote class="pull-quote">"I want to build a community that will feed generations."</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="pillars-header">
+    <div class="reveal">
+      <div class="pillar-eyebrow">The Model</div>
+      <h2>Six pillars. <em>One blueprint.</em></h2>
+    </div>
+    <p class="pillars-intro reveal">Every Continuum Valley site is built on the same six pillars. Together they create a system that is profitable for farmers, nourishing for communities, and replicable at scale.</p>
+  </div>
+  <div class="pillar-grid">
+    <div class="pillar reveal">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Food Sovereignty</div>
+      <p class="pillar-desc">Independence from fragile global supply chains through localized production.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Land Stewardship</div>
+      <p class="pillar-desc">Regenerative practices that leave private land richer and more valuable every year.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Generational Tech</div>
+      <p class="pillar-desc">Standardizing traditional knowledge into a modern, easy-to-follow operational manual.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">04</div>
+      <div class="pillar-title">Mutual Aid</div>
+      <p class="pillar-desc">Building community roots by ensuring surplus always reaches local neighbors.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">05</div>
+      <div class="pillar-title">Scalable Economy</div>
+      <p class="pillar-desc">Creating micro-economies that keep financial value within the farm's ecosystem.</p>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-num">06</div>
+      <div class="pillar-title">Franchise Blueprint</div>
+      <p class="pillar-desc">A turnkey licensing model for independent farmers to replicate the flagship success.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLAGSHIP -->
+<section class="flagship" id="flagship">
+  <div class="flagship-inner">
+
+    <!-- MISSION STATEMENT BLOCK — LOCKED IN -->
+    <div class="mission-statement-block reveal">
+      <div class="mission-quote-mark">"</div>
+      <div class="mission-statement-text">
+        <p>No one should ever have to <strong>wonder where their next meal is coming from.</strong> The Continuum Valley Flagship exists to make that a reality — not just for one family, but for an entire generation of communities.</p>
+        <span>— The Mission · Continuum Valley</span>
+      </div>
+    </div>
+
+    <div class="flagship-header">
+      <div class="reveal">
+        <span class="flagship-tag">Continuum Valley Flagship</span>
+        <h2>What your <em>investment builds.</em></h2>
+      </div>
+      <p class="flagship-intro reveal">The flagship is a full-scale regenerative farm and community venue where every pillar operates in real life. This is what donors and investors are bringing into existence.</p>
+    </div>
+
+    <div class="flagship-grid">
+      <div class="flagship-item reveal">
+        <span class="flagship-item-icon">🌱</span>
+        <div class="flagship-item-title">On-Site Food Production</div>
+        <div class="flagship-item-desc">Year-round produce grown, harvested, and distributed on the flagship property — proving that local food sovereignty is not just possible, it's profitable.</div>
+        <span class="flagship-status status-building">In Development</span>
+      </div>
+      <div class="flagship-item reveal">
+        <span class="flagship-item-icon">🏡</span>
+        <div class="flagship-item-title">Community Venue &amp; Gathering Space</div>
+        <div class="flagship-item-desc">A physical destination for markets, workshops, events, and celebrations. The farm becomes the town square — where neighbors become a community.</div>
+        <span class="flagship-status status-building">In Development</span>
+      </div>
+      <div class="flagship-item reveal">
+        <span class="flagship-item-icon">📖</span>
+        <div class="flagship-item-title">Education &amp; Knowledge Hub</div>
+        <div class="flagship-item-desc">Hands-on workshops teaching regenerative farming, composting, food preservation, and land management. The knowledge stays in the community forever.</div>
+        <span class="flagship-status status-planned">Planned</span>
+      </div>
+      <div class="flagship-item reveal">
+        <span class="flagship-item-icon">🤝</span>
+        <div class="flagship-item-title">Mutual Aid Network</div>
+        <div class="flagship-item-desc">Surplus produce goes directly to neighbors. The flagship builds food access infrastructure before it's ever needed in a crisis.</div>
+        <span class="flagship-status status-planned">Planned</span>
+      </div>
+      <div class="flagship-item reveal">
+        <span class="flagship-item-icon">📊</span>
+        <div class="flagship-item-title">The Franchise Blueprint</div>
+        <div class="flagship-item-desc">Every operation, every system, every lesson is documented into a turnkey playbook — ready for the next farmer to deploy on their own land.</div>
+        <span class="flagship-status status-planned">Planned</span>
+      </div>
+      <div class="flagship-item flagship-item-cta reveal">
+        <span class="flagship-item-icon">🌍</span>
+        <div class="flagship-item-title">The First of Many</div>
+        <div class="flagship-item-desc">Once the flagship proves the model, the blueprint scales. Your investment doesn't just build one farm — it builds the template that feeds generations nationwide.</div>
+        <a href="#join" style="display:inline-block; margin-top:1rem; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream); text-decoration:none; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom:2px;">Be a Founding Donor →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="join">
+  <div class="cta-card reveal">
+    <div class="cta-content">
+      <h2>Join the <em>Continuum.</em></h2>
+      <p>Whether you are a donor ready to fund the flagship or an investor interested in the franchise expansion — let's connect. Your involvement shapes how many communities never go hungry again.</p>
+      <div class="cta-buttons">
+        <a href="mailto:your@email.com" class="btn-cta-primary">Become a Donor</a>
+        <a href="mailto:your@email.com" class="btn-cta-secondary">Investor Inquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="footer-logo-mark" viewBox="0 0 52 52" fill="none">
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" fill="#7A8C6E" opacity="0.25"/>
+        <path d="M4 40 L14 22 L22 32 L26 18 L34 32 L42 22 L48 40Z" stroke="#A8B99A" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+        <circle cx="26" cy="15" r="5" fill="#C4714A"/>
+        <line x1="4" y1="40" x2="48" y2="40" stroke="#F5EFE0" stroke-width="1.2" opacity="0.2"/>
+        <path d="M16 38 Q16 34 20 32" stroke="#A8B99A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M36 38 Q36 34 32 32" stroke="#A8B99A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <h3><em>Continuum Valley</em></h3>
+      <p>A flagship-to-franchise model for the future of food. No one should ever wonder where their next meal is coming from.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#join">Donor Inquiries</a></li>
+        <li><a href="#join">Investor Relations</a></li>
+        <li><a href="#join">General Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">TikTok</a></li>
+        <li><a href="#">YouTube</a></li>
+        <li><span class="coming-soon">Flagship: Coming Soon</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Continuum Valley. All rights reserved.</span>
+    <span>Planted with intention. Built to last.</span>
+  </div>
+</footer>
+
+<script>
+// ════════════════════════════════════════════════════
+// ADMIN PASSWORD — change this before going live!
+// ════════════════════════════════════════════════════
+const ADMIN_PASSWORD = "continuum2026";
+
+function openAdmin() {
+  document.getElementById('admin-overlay').classList.add('active');
+  document.getElementById('admin-login-box').style.display = 'block';
+  document.getElementById('admin-editor-box').style.display = 'none';
+  setTimeout(() => document.getElementById('admin-password-input').focus(), 100);
+}
+function closeAdmin() {
+  document.getElementById('admin-overlay').classList.remove('active');
+  document.getElementById('admin-password-input').value = '';
+}
+function tryLogin() {
+  const val = document.getElementById('admin-password-input').value;
+  if (val === ADMIN_PASSWORD) {
+    document.getElementById('admin-login-box').style.display = 'none';
+    document.getElementById('admin-editor-box').style.display = 'block';
+    buildAdminForm();
+  } else {
+    const inp = document.getElementById('admin-password-input');
+    inp.style.borderColor = '#A8512B';
+    inp.style.background = '#FCEDE5';
+    setTimeout(() => { inp.style.borderColor = ''; inp.style.background = ''; }, 1500);
+  }
+}
+function buildAdminForm() {
+  document.getElementById('admin-form').innerHTML = `
+    <div class="admin-section">
+      <h3>Contact Emails</h3>
+      <div class="admin-field"><label>Donor Inquiry Email</label><input id="e-donor" type="email" placeholder="your@email.com" /></div>
+      <div class="admin-field"><label>Investor Inquiry Email</label><input id="e-investor" type="email" placeholder="your@email.com" /></div>
+    </div>
+    <div class="admin-section">
+      <h3>Social Links</h3>
+      <div class="admin-field"><label>Instagram URL</label><input id="e-ig" type="url" placeholder="https://instagram.com/..." /></div>
+      <div class="admin-field"><label>TikTok URL</label><input id="e-tt" type="url" placeholder="https://tiktok.com/..." /></div>
+      <div class="admin-field"><label>YouTube URL</label><input id="e-yt" type="url" placeholder="https://youtube.com/..." /></div>
+    </div>
+    <div class="admin-section">
+      <h3>Flagship Status Badges</h3>
+      <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:1rem;">Update these as the flagship progresses. Options: "In Development" · "Active" · "Planned" · "Complete"</p>
+      <div class="admin-field"><label>On-Site Food Production Status</label><input id="s-1" type="text" value="In Development" /></div>
+      <div class="admin-field"><label>Community Venue Status</label><input id="s-2" type="text" value="In Development" /></div>
+      <div class="admin-field"><label>Education Hub Status</label><input id="s-3" type="text" value="Planned" /></div>
+      <div class="admin-field"><label>Mutual Aid Network Status</label><input id="s-4" type="text" value="Planned" /></div>
+      <div class="admin-field"><label>Franchise Blueprint Status</label><input id="s-5" type="text" value="Planned" /></div>
+    </div>
+    <div class="admin-section">
+      <h3>Admin Password</h3>
+      <div class="admin-field"><label>Change Password</label><input id="e-pw" type="text" placeholder="New password..." /></div>
+    </div>
+  `;
+}
+function generateCode() {
+  const html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+  document.getElementById('generated-output').value = html;
+  document.getElementById('generated-output').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function copyCode(e) {
+  const ta = document.getElementById('generated-output');
+  if (!ta.value) generateCode();
+  ta.select();
+  ta.setSelectionRange(0, 9999999);
+  try { document.execCommand('copy'); } catch(err) {}
+  if (navigator.clipboard) navigator.clipboard.writeText(ta.value).catch(()=>{});
+  const btn = e && e.target ? e.target : null;
+  if (btn) {
+    const orig = btn.textContent;
+    btn.textContent = '✓ Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  }
+}
+
+// Open admin: URL param, triple-click logo, or Ctrl+Shift+A
+if (new URLSearchParams(location.search).get('admin') === '1') openAdmin();
+let cc = 0, ct;
+document.getElementById('brand-logo').addEventListener('click', (e) => {
+  cc++; clearTimeout(ct);
+  ct = setTimeout(() => cc = 0, 600);
+  if (cc >= 3) { cc = 0; e.preventDefault(); openAdmin(); }
+});
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) { e.preventDefault(); openAdmin(); }
+  if (e.key === 'Escape') closeAdmin();
+});
+
+// Reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 6) * 70}ms`;
+  io.observe(el);
+});
+</script>
+</body>
+</html>
